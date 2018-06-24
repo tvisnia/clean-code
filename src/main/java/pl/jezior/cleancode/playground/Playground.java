@@ -15,7 +15,7 @@ public class Playground {
     }
 
     public long countUppercase(String fileName) throws IOException {
-        return Files.readAllLines(Paths.get(Playground.class.getClassLoader().getResource(fileName).getPath()))
+        return Files.readAllLines(Paths.get(getClass().getClassLoader().getResource(fileName).getPath()))
                 .stream()
                 .flatMap(l -> Arrays.stream(l.split("")).filter(s -> s.length() > 0).map(s->s.charAt(0)))
                 .filter(this::isUpper)
