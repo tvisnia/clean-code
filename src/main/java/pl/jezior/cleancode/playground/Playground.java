@@ -11,14 +11,18 @@ public class Playground {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(Files.readAllLines(Paths.get(Playground.class.getClassLoader().getResource("sherlock.txt").getPath()))
-                .stream()
-                .flatMap(l -> Arrays.stream(l.split("")).filter(s -> s.length() > 0).map(s->s.charAt(0)))
-                .filter(Playground::isUpper)
-                .count());
+        System.out.println(new Playground().countUppercase("sherlock.txt"));
     }
 
-    private static boolean isUpper(char c) {
+    public long countUppercase(String fileName) throws IOException {
+        return Files.readAllLines(Paths.get(Playground.class.getClassLoader().getResource(fileName).getPath()))
+                .stream()
+                .flatMap(l -> Arrays.stream(l.split("")).filter(s -> s.length() > 0).map(s->s.charAt(0)))
+                .filter(this::isUpper)
+                .count();
+    }
+
+    public boolean isUpper(char c) {
         return c >= 'A' && c <= 'Z';
     }
 }
