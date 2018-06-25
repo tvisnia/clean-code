@@ -52,6 +52,11 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>annotations</artifactId>
+            <version>12.0</version>
+        </dependency>
         <!-- Mandatory dependencies for using Spock -->
         <dependency>
             <groupId>org.spockframework</groupId>
